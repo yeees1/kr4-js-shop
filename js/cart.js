@@ -55,14 +55,35 @@ if (cartList) {
       const link = document.createElement('a');
       link.href = product.url;
       link.textContent = product.title;
+      const controls = document.createElement('div');
+      controls.classList.add('quantity-controls');
+      const minus = document.createElement('button');
+      minus.type = 'button';
+      minus.classList.add('button', 'button--secondary');
+      minus.dataset.cartMinus = id;
+      minus.textContent = '−';
+      minus.setAttribute('aria-label', `Убрать одну единицу: ${product.title}`);
+      minus.addEventListener('click', () => {
+        removeFromCart(id);
+        (cartList.querySelector(`[data-cart-minus="${id}"]`) || cartList.querySelector('button') || empty.querySelector('a')).focus();
+      });
+      const amount = document.createElement('span');
+      amount.classList.add('quantity-value');
+      amount.textContent = quantity;
+      const plus = document.createElement('button');
+      plus.type = 'button';
+      plus.classList.add('button', 'button--secondary');
+      plus.dataset.cartPlus = id;
+      plus.textContent = '+';
+      plus.setAttribute('aria-label', `Добавить одну единицу: ${product.title}`);
+      plus.addEventListener('click', () => {
+        addToCart(id);
+        cartList.querySelector(`[data-cart-plus="${id}"]`).focus();
+      });
+      controls.append(minus, amount, plus);
       const detail = document.createElement('span');
-      detail.textContent = `${quantity} × ${formatPrice(product.price)} = ${formatPrice(quantity * product.price)}`;
-      const remove = document.createElement('button');
-      remove.type = 'button';
-      remove.classList.add('button', 'button--secondary');
-      remove.textContent = 'Убрать один';
-      remove.addEventListener('click', () => removeFromCart(id));
-      row.append(link, detail, remove);
+      detail.textContent = `${formatPrice(product.price)} × ${quantity} = ${formatPrice(quantity * product.price)}`;
+      row.append(link, controls, detail);
       cartList.append(row);
     }
     empty.hidden = cart.length > 0;

@@ -528,6 +528,25 @@ a:focus-visible {
     font-weight: 700;
 }
 
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.quantity-controls .button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px 10px;
+    font-size: 1.25rem;
+}
+
+.quantity-value {
+    min-width: 2ch;
+    text-align: center;
+    font-weight: 700;
+}
+
 .cart-count {
     display: inline-block;
     min-width: 1.5em;

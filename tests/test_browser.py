@@ -46,9 +46,15 @@ try:
         page.goto(base + '/cart.html')
         assert '7' in page.locator('#cart-total').inner_text()
         assert page.locator('#cart-items-count').inner_text() == '2'
-        page.locator('.cart-row button').click()
-        assert page.locator('#cart-items-count').inner_text() == '1'
+        page.get_by_role('button', name='Добавить одну единицу: Бирюзовая футболка 1С').click()
+        assert page.locator('.quantity-value').inner_text() == '3'
+        assert page.locator('#cart-items-count').inner_text() == '3'
+        assert '11 700' in page.locator('#cart-total').inner_text().replace('\xa0', ' ')
+        page.get_by_role('button', name='Убрать одну единицу: Бирюзовая футболка 1С').click()
+        assert page.locator('.quantity-value').inner_text() == '2'
         page.reload()
+        assert page.locator('.quantity-value').inner_text() == '2'
+        page.get_by_role('button', name='Убрать одну единицу: Бирюзовая футболка 1С').click()
         assert page.locator('#cart-items-count').inner_text() == '1'
 
         page.goto(base + '/order.html')
@@ -76,6 +82,11 @@ try:
         assert page.locator('#order-items li').count() == 1
         page.reload()
         assert page.locator('#order-items li').count() == 1
+        page.goto(base + '/cart.html')
+        page.get_by_role('button', name='Убрать одну единицу: Бирюзовая футболка 1С').click()
+        assert page.locator('#cart-empty').is_visible()
+        assert page.locator('#cart-summary').is_hidden()
+        assert page.locator('.cart-count').first.inner_text() == '0'
 
         for file in [*ROOT.glob('*.html'), *(ROOT / 'products').glob('*.html')]:
             page.goto(base + '/' + file.relative_to(ROOT).as_posix(), wait_until='networkidle')
