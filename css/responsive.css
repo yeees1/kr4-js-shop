@@ -127,8 +127,10 @@ main, section, article, aside, .site-header, .catalog-products, .product-detail_
 
 .section__image {
     width: 100%;
-    max-height: 360px;
-    object-fit: cover;
+    max-width: 420px;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: contain;
 }
 
 .comparison-table-wrap {

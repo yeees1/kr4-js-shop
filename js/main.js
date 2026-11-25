@@ -4,7 +4,7 @@ const detailActions = document.querySelector('.product-detail .product-card__act
 if (detailActions) {
   const path = location.pathname.split('/').slice(-2).join('/');
   const product = products.find(item => path.endsWith(item.url));
-  if (product) {
+  if (product && product.price !== null) {
     const button = document.createElement('button');
     button.classList.add('button');
     button.type = 'button';

@@ -31,7 +31,12 @@
 </header>
 <main id="main">
     <section class="section"><h1>Оставить заявку</h1>
-        <p>Проверьте товары из корзины и укажите контактные данные. Форма не отправляет заявку на сервер.</p>
+        <p>Проверьте товары из корзины и укажите контактные данные.</p>
+        <img class="order-photo" src="images/moments-1.jpg" alt="Люди общаются у рабочего стола" width="1152" height="922">
+        <div id="order-feedback" class="order-feedback" hidden>
+            <img id="order-feedback-image" src="images/moments-4.jpg" alt="" width="959" height="1280">
+            <p id="order-message" class="success-message" role="status" tabindex="-1"></p>
+        </div>
         <form id="order-form" class="order-form order-form--page" novalidate>
             <section aria-labelledby="order-items-heading">
                 <h2 id="order-items-heading">Выбранные товары</h2>
@@ -56,7 +61,7 @@
                 <button class="button" type="submit">Завершить заявку</button>
             </div>
         </form>
-        <p id="order-message" class="success-message" role="status" tabindex="-1" hidden></p></section>
+    </section>
 </main>
 <footer><p>&copy; 2026 Мерч 1С.</p></footer>
 <script src="js/validation.js" defer></script>

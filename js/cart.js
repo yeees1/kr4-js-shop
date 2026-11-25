@@ -80,7 +80,21 @@ if (cartList) {
         addToCart(id);
         cartList.querySelector(`[data-cart-plus="${id}"]`).focus();
       });
-      controls.append(minus, amount, plus);
+      const removeAll = document.createElement('button');
+      removeAll.type = 'button';
+      removeAll.classList.add('button', 'button--secondary', 'cart-remove');
+      removeAll.innerHTML = `<svg viewBox="0 0 512 512" width="24" height="24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M176 112V80a32 32 0 0 1 32-32h96a32 32 0 0 1 32 32v32"/>
+        <rect x="64" y="112" width="384" height="64" rx="32"/>
+        <path d="m96 176 29 257a36 36 0 0 0 36 31h190a36 36 0 0 0 36-31l29-257M208 240v144m96-144v144"/>
+      </svg>`;
+      removeAll.setAttribute('aria-label', `Удалить из корзины: ${product.title}`);
+      removeAll.addEventListener('click', () => {
+        cart = cart.filter(item => item !== id);
+        saveCart();
+        (cartList.querySelector('button') || empty.querySelector('a')).focus();
+      });
+      controls.append(minus, amount, plus, removeAll);
       const detail = document.createElement('span');
       detail.textContent = `${formatPrice(product.price)} × ${quantity} = ${formatPrice(quantity * product.price)}`;
       row.append(link, controls, detail);

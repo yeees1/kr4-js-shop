@@ -19,18 +19,36 @@ try:
         page.on('pageerror', lambda error: errors.append(str(error)))
 
         page.goto(base + '/catalog.html')
-        assert page.locator('.product-card').count() == 12
-        assert page.locator('#catalog-count').inner_text() == 'Найдено товаров: 12'
+        assert page.locator('.product-card').count() == 23
+        assert page.locator('#catalog-count').inner_text() == 'Найдено товаров: 23'
+        links = page.locator('.product-card__actions a').evaluate_all('(anchors) => anchors.map(a => a.getAttribute("href"))')
+        assert len(set(links)) == 23
+        assert all((ROOT / link).is_file() for link in links)
+        page.locator('.product-card').filter(has_text='Футболка Balance').get_by_role('link', name='Подробнее').click()
+        assert page.get_by_role('heading', name='Футболка Balance').is_visible()
+        assert page.get_by_role('button', name='В корзину').count() == 1
+        page.goto(base + '/catalog.html')
+        page.locator('#catalog-category').select_option('ella')
+        assert page.locator('.product-card').count() == 3
+        assert page.locator('.product-card__price').all_inner_texts() == ['Бесценно'] * 3
+        assert page.locator('.product-card [data-id]').count() == 0
+        page.locator('.product-card').first.get_by_role('link', name='Подробнее').click()
+        assert page.get_by_role('heading', name='Моя спящая Элла').is_visible()
+        assert page.get_by_role('button', name='В корзину').count() == 0
+        page.goto(base + '/catalog.html')
         page.locator('#catalog-search').fill('термос')
         assert page.locator('.product-card').count() == 2
         page.locator('#catalog-search').fill('нет такого товара')
         assert page.locator('#catalog-empty').is_visible()
         page.locator('#catalog-reset').click()
         page.locator('#catalog-category').select_option('tech')
-        assert page.locator('.product-card').count() == 2
+        assert page.locator('.product-card').count() == 4
         page.locator('#catalog-category').select_option('all')
         page.locator('#catalog-sort').select_option('price-asc')
         assert 'Линейка-лупа' in page.locator('.product-card').first.inner_text()
+        assert page.locator('.product-card__price').all_inner_texts()[-3:] == ['Бесценно'] * 3
+        page.locator('#catalog-sort').select_option('price-desc')
+        assert page.locator('.product-card__price').all_inner_texts()[-3:] == ['Бесценно'] * 3
         page.locator('#catalog-sort').select_option('default')
         page.locator('[data-favorite="1"]').click()
         page.locator('#catalog-favorites').check()
@@ -54,8 +72,15 @@ try:
         assert page.locator('.quantity-value').inner_text() == '2'
         page.reload()
         assert page.locator('.quantity-value').inner_text() == '2'
-        page.get_by_role('button', name='Убрать одну единицу: Бирюзовая футболка 1С').click()
-        assert page.locator('#cart-items-count').inner_text() == '1'
+        assert page.get_by_role('button', name='Удалить из корзины: Бирюзовая футболка 1С').locator('svg').count() == 1
+        page.get_by_role('button', name='Удалить из корзины: Бирюзовая футболка 1С').click()
+        assert page.locator('#cart-empty').is_visible()
+        assert page.locator('#cart-summary').is_hidden()
+        assert page.locator('.cart-count').first.inner_text() == '0'
+        page.reload()
+        assert page.locator('#cart-empty').is_visible()
+        page.goto(base + '/catalog.html')
+        page.locator('[data-id="1"]').click()
 
         page.goto(base + '/order.html')
         assert page.locator('#order-product').count() == 0

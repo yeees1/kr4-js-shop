@@ -7,6 +7,18 @@ if (orderForm) {
     { input: orderForm.querySelector('input[type="checkbox"]'), check: (_, input) => input.checked, error: 'Подтвердите правильность данных.' }
   ];
   const message = document.querySelector('#order-message');
+  const feedback = document.querySelector('#order-feedback');
+  const feedbackImage = document.querySelector('#order-feedback-image');
+
+  function showFeedback(error, text) {
+    feedback.hidden = false;
+    message.classList.toggle('form-message--error', error);
+    message.textContent = text;
+    feedbackImage.src = error ? 'images/moments-4.jpg' : 'images/moments-2.jpg';
+    feedbackImage.alt = error ? 'Мужчина рядом с компьютерными столами' : 'Мужчина в серой рубашке на светлом фоне';
+    feedbackImage.style.objectPosition = error ? 'center 35%' : 'center 20%';
+  }
+
   fields.forEach(field => {
     const error = document.createElement('small');
     error.classList.add('field-error');
@@ -27,30 +39,27 @@ if (orderForm) {
 
   fields.forEach(field => field.input.addEventListener(field.input.type === 'checkbox' || field.input.tagName === 'SELECT' ? 'change' : 'input', () => {
     if (field.input.getAttribute('aria-invalid') === 'true') validate(field);
-    message.hidden = true;
+    feedback.hidden = true;
   }));
 
   orderForm.addEventListener('submit', event => {
     event.preventDefault();
     if (!cart.length) {
-      message.hidden = false;
-      message.classList.add('form-message--error');
-      message.textContent = 'Добавьте товары в корзину перед подготовкой заявки.';
+      showFeedback(true, 'Добавьте товары в корзину перед подготовкой заявки.');
       document.querySelector('#order-empty a').focus();
       return;
     }
     const valid = fields.map(validate).every(Boolean);
-    message.hidden = false;
     if (!valid) {
-      message.classList.add('form-message--error');
-      message.textContent = 'Проверьте выделенные поля.';
+      showFeedback(true, 'Проверьте выделенные поля.');
       fields.find(field => field.input.getAttribute('aria-invalid') === 'true').input.focus();
       return;
     }
-    message.classList.remove('form-message--error');
-    message.textContent = 'Заявка подготовлена. Данные не отправлены.';
+    showFeedback(false, 'Заявка подготовлена.');
     orderForm.reset();
     fields.forEach(field => { field.input.removeAttribute('aria-invalid'); field.errorNode.hidden = true; });
+    cart = [];
+    saveCart();
     message.focus();
   });
 }

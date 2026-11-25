@@ -137,32 +137,6 @@ a:focus-visible {
     border-radius: var(--radius-lg);
 }
 
-.hero--photo {
-    min-height: 260px;
-    padding: 48px;
-    background: linear-gradient(90deg, rgb(247 244 235 / 96%) 0%, rgb(247 244 235 / 84%) 55%, rgb(247 244 235 / 44%) 100%), url("../images/moments-1.jpg") center 48% / cover;
-}
-
-.moments-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
-}
-
-.moments-grid img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: var(--radius-md);
-}
-
-@media (min-width: 750px) {
-    .moments-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-}
-
 .section {
     max-width: var(--container-width);
     margin: 0 auto var(--space-xl);
@@ -517,6 +491,42 @@ a:focus-visible {
     background-color: #d1e7dd;
 }
 
+.order-photo {
+    display: block;
+    width: min(100%, 720px);
+    height: 300px;
+    margin-bottom: var(--space-md);
+    object-fit: cover;
+    object-position: center 42%;
+    border-radius: var(--radius-md);
+}
+
+.order-feedback {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 720px;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.order-feedback[hidden] {
+    display: none;
+}
+
+.order-feedback img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: var(--radius-md);
+}
+
+.order-feedback .success-message {
+    flex: 1;
+    margin: 0;
+}
+
 .form-message--error {
     color: var(--color-danger);
     border-left-color: var(--color-danger);
@@ -538,6 +548,28 @@ a:focus-visible {
     max-width: 760px;
     padding: 0;
     list-style: none;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.cart-photo {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    object-position: center 55%;
+    border-radius: var(--radius-md);
+}
+
+@media (min-width: 750px) {
+    .cart-layout {
+        grid-template-columns: minmax(0, 1fr) 300px;
+    }
 }
 
 .cart-row {
@@ -565,6 +597,12 @@ a:focus-visible {
     min-height: 44px;
     padding: 4px 10px;
     font-size: 1.25rem;
+}
+
+.quantity-controls .cart-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .quantity-value {

@@ -29,7 +29,7 @@ function createCard(product) {
   description.textContent = product.description;
   const price = document.createElement('p');
   price.classList.add('product-card__price');
-  price.textContent = formatPrice(product.price);
+  price.textContent = product.price === null ? 'Бесценно' : formatPrice(product.price);
   const actions = document.createElement('div');
   actions.classList.add('product-card__actions');
   const details = document.createElement('a');
@@ -49,7 +49,9 @@ function createCard(product) {
   favorite.setAttribute('aria-pressed', String(favorites.includes(product.id)));
   favorite.setAttribute('aria-label', favorites.includes(product.id) ? `Убрать из избранного: ${product.title}` : `В избранное: ${product.title}`);
   favorite.textContent = favorites.includes(product.id) ? '♥' : '♡';
-  actions.append(details, add, favorite);
+  actions.append(details);
+  if (product.price !== null) actions.append(add);
+  actions.append(favorite);
   card.append(image, title, description, price, actions);
   return card;
 }
@@ -60,8 +62,8 @@ function renderCatalog() {
   let visible = products.filter(product => product.title.toLocaleLowerCase('ru').includes(query)
     && (category.value === 'all' || product.category === category.value)
     && (!favoritesOnly.checked || favorites.includes(product.id)));
-  if (sort.value === 'price-asc') visible = [...visible].sort((a, b) => a.price - b.price);
-  if (sort.value === 'price-desc') visible = [...visible].sort((a, b) => b.price - a.price);
+  if (sort.value === 'price-asc') visible = [...visible].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+  if (sort.value === 'price-desc') visible = [...visible].sort((a, b) => (b.price ?? -Infinity) - (a.price ?? -Infinity));
   if (sort.value === 'title') visible = [...visible].sort((a, b) => a.title.localeCompare(b.title, 'ru'));
   grid.replaceChildren(...visible.map(createCard));
   count.textContent = `Найдено товаров: ${visible.length}`;
