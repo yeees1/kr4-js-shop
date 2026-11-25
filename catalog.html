@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог товаров Мерч 1С">
+    <title>Каталог — Мерч 1С</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<header>
+    <div class="site-header">
+        <a class="site-logo" href="index.html"><img src="images/logo.jpg" alt="" width="120" height="90"><span
+                class="site-name">Мерч 1С</span></a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cart.html">Корзина <span class="cart-count" aria-label="Товаров в корзине">0</span></a></li>
+                <li><a href="catalog.html" aria-current="page">Каталог</a></li>
+                <li><a href="order.html">Заявка</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="index.html#advantages">Преимущества</a></li>
+                <li><a href="index.html#popular">Популярные товары</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="main">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a><span>Каталог</span></nav>
+    <section class="section"><h1>Каталог товаров</h1>
+        <p>Одежда, аксессуары, вещи для дома, техника, канцелярия и коллекция Эллы.</p></section>
+    <section class="catalog-layout">
+        <aside class="catalog-filters">
+            <h2>Найти товар</h2>
+            <div class="filters-form">
+                <div class="form-field"><label for="catalog-search">Поиск по названию</label><input id="catalog-search" type="search" placeholder="Например, термос"></div>
+                <div class="form-field"><label for="catalog-category">Категория</label><select id="catalog-category"><option value="all">Все категории</option><option value="clothes">Одежда</option><option value="accessories">Аксессуары</option><option value="home">Для дома</option><option value="tech">Техника</option><option value="stationery">Канцелярия</option></select></div>
+                <div class="form-field"><label for="catalog-sort">Сортировка</label><select id="catalog-sort"><option value="default">По умолчанию</option><option value="price-asc">Сначала дешевле</option><option value="price-desc">Сначала дороже</option><option value="title">По названию</option></select></div>
+                <label><input id="catalog-favorites" type="checkbox"> Только избранное</label>
+            </div>
+        </aside>
+        <section class="catalog-products"><h2>Товары</h2>
+            <p id="catalog-count" role="status"></p>
+            <div id="catalog-grid" class="products-grid"></div>
+            <div id="catalog-empty" class="empty-state" hidden><h3>Товары не найдены</h3><p>Попробуйте другой запрос или сбросьте фильтры.</p><button id="catalog-reset" class="button" type="button">Сбросить фильтры</button></div>
+            <p id="catalog-message" role="status"></p>
+        </section>
+    </section>
+</main>
+<footer><p>&copy; 2026 Мерч 1С.</p></footer>
+<script src="js/data.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/catalog.js" defer></script>
+</body>
+</html>

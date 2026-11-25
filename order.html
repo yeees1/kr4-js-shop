@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Заявка на товары Мерч 1С">
+    <title>Заявка — Мерч 1С</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<header>
+    <div class="site-header">
+        <a class="site-logo" href="index.html"><img src="images/logo.jpg" alt="" width="120" height="90"><span
+                class="site-name">Мерч 1С</span></a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="cart.html">Корзина <span class="cart-count" aria-label="Товаров в корзине">0</span></a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="order.html" aria-current="page">Заявка</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="index.html#advantages">Преимущества</a></li>
+                <li><a href="index.html#popular">Популярные товары</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="main">
+    <section class="section"><h1>Оставить заявку</h1>
+        <p>Выберите товар и укажите контактные данные. Это демонстрация: заявка не отправляется на сервер.</p>
+        <form id="order-form" class="order-form order-form--page" novalidate>
+            <div class="form-field"><label for="order-product">Товар</label><select id="order-product" required>
+                <option value="">Выберите товар</option>
+                <optgroup label="Другие товары из КР №3">
+                    <option>Футболка «Славянский интерфейс»</option>
+                    <option>Футболка Balance</option>
+                    <option>Металлический кардхолдер</option>
+                    <option>Ремешок для телефона</option>
+                    <option>Кружка Grade Fade</option>
+                    <option>Выдвижной кабель 3 в 1</option>
+                    <option>Коврик с подсказками по 1С</option>
+                    <option>Ручка-мультитул 1С</option>
+                    <option>Моя спящая Элла</option>
+                    <option>Моя уставшая защитница Элла</option>
+                    <option>Моя защитница Элла</option>
+                </optgroup>
+            </select></div>
+            <div class="form-field"><label for="order-name">Имя</label><input id="order-name" type="text" minlength="2"
+                                                                              autocomplete="given-name" required></div>
+            <div class="form-field"><label for="order-email">E-mail</label><input id="order-email" type="email"
+                                                                                  autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Введите адрес вида name@example.com" required></div>
+            <div class="form-field"><label for="order-phone">Телефон</label><input id="order-phone" type="tel"
+                                                                                   inputmode="tel" autocomplete="tel"
+                                                                                   pattern="(?:\+7|8)? ?(?:\([0-9]{3}\)|[0-9]{3}) ?[0-9]{3}(?: |-)?[0-9]{2}(?: |-)?[0-9]{2}"
+                                                                                   title="Введите 10 цифр или номер с +7/8, например +7 967 942-52-67" required></div>
+            <div class="form-field"><label for="order-comment">Комментарий</label><textarea id="order-comment"
+                                                                                            rows="4"></textarea></div>
+            <div class="form-field form-field--checkbox">
+                <label><input type="checkbox" required> Подтверждаю правильность указанных данных</label>
+            </div>
+            <div class="form-actions">
+                <button class="button" type="submit">Завершить заявку</button>
+            </div>
+        </form>
+        <p id="order-message" class="success-message" role="status" tabindex="-1" hidden></p></section>
+</main>
+<footer><p>&copy; 2026 Мерч 1С.</p></footer>
+<script src="js/validation.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

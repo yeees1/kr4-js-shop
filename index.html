@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Мерч 1С: одежда, аксессуары и полезные вещи">
+    <title>Главная — Мерч 1С</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<header>
+    <div class="site-header">
+        <a class="site-logo" href="index.html"><img src="images/logo.jpg" alt="" width="120" height="90"><span
+                class="site-name">Мерч 1С</span></a>
+        <nav class="site-nav" aria-label="Основная навигация">
+            <ul class="site-nav__list">
+                <li><a href="index.html" aria-current="page">Главная</a></li>
+                <li><a href="cart.html">Корзина <span class="cart-count" aria-label="Товаров в корзине">0</span></a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="order.html">Заявка</a></li>
+                <li><a href="reviews.html">Отзывы</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="index.html#advantages">Преимущества</a></li>
+                <li><a href="index.html#popular">Популярные товары</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main id="main">
+    <section class="hero"><h1>Мерч 1С</h1>
+        <p>Одежда, аксессуары и полезные вещи на каждый день.</p><a class="button" href="catalog.html">Перейти в
+            каталог</a></section>
+    <section class="section" id="advantages"><h2>Преимущества</h2>
+        <ul class="advantages-list">
+            <li>Пять категорий мерча и коллекция Эллы;</li>
+            <li>фильтры в каталоге;</li>
+            <li>подробные описания и характеристики;</li>
+            <li>заявка на выбранный товар.</li>
+        </ul>
+    </section>
+    <section class="section" id="popular"><h2>Популярные товары</h2>
+        <div class="products-grid">
+            <article class="product-card filter-clothes"><span class="product-card__badge">Хит</span>
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/tshirt-turquoise-360.webp 360w, images/tshirt-turquoise-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/tshirt-turquoise.jpg" alt="Бирюзовая футболка 1С"
+                         width="853" height="1280" loading="lazy"></picture>
+                <h3 class="product-card__title">Бирюзовая футболка 1С</h3>
+                <p class="product-card__description">Футболка свободного кроя с вышитым логотипом 1С.</p>
+                <p class="product-card__price">3 900 ₽</p>
+                <div class="product-card__actions"><a class="button button--secondary" href="product.html">Подробнее</a><a
+                        class="button" href="order.html">Заказать</a></div>
+            </article>
+            <article class="product-card filter-clothes">
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/socks-useful-360.webp 360w, images/socks-useful-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/socks-useful.jpg" alt="Носки «Причиняем пользу»"
+                         width="1280" height="854" loading="lazy"></picture>
+                <h3 class="product-card__title">Носки «Причиняем пользу»</h3>
+                <p class="product-card__description">Белые носки с красным рисунком и фирменной надписью.</p>
+                <p class="product-card__price">560 ₽</p>
+                <div class="product-card__actions"><a class="button button--secondary"
+                                                      href="products/socks-useful.html">Подробнее</a><a class="button"
+                                                                                                        href="order.html">Заказать</a>
+                </div>
+            </article>
+            <article class="product-card filter-home">
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/coffer-yellow-360.webp 360w, images/coffer-yellow-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/coffer-yellow.jpg" alt="Жёлтый термостакан 1С"
+                         width="1000" height="1039" loading="lazy"></picture>
+                <h3 class="product-card__title">Жёлтый термостакан 1С</h3>
+                <p class="product-card__description">Компактный термостакан с прозрачной крышкой.</p>
+                <p class="product-card__price">2 080 ₽</p>
+                <div class="product-card__actions"><a class="button button--secondary"
+                                                      href="products/coffer-yellow.html">Подробнее</a><a class="button"
+                                                                                                         href="order.html">Заказать</a>
+                </div>
+            </article>
+            <article class="product-card filter-stationery">
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/pen-phone-stand-360.webp 360w, images/pen-phone-stand-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/pen-phone-stand.jpg"
+                         alt="Ручка с подставкой для телефона" width="1280" height="850" loading="lazy"></picture>
+                <h3 class="product-card__title">Ручка с подставкой для телефона</h3>
+                <p class="product-card__description">Ручка с клипсой, которую можно использовать как подставку.</p>
+                <p class="product-card__price">430 ₽</p>
+                <div class="product-card__actions"><a class="button button--secondary"
+                                                      href="products/pen-phone-stand.html">Подробнее</a><a
+                        class="button" href="order.html">Заказать</a></div>
+            </article>
+            <article class="product-card filter-ella"><span class="product-card__badge">Хит</span>
+                <picture>
+                    <source type="image/webp" srcset="images/ella-360.webp 360w, images/ella-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/ella.jpg" alt="Моя спящая Элла" width="960"
+                         height="1280" loading="lazy"></picture>
+                <h3 class="product-card__title">Моя спящая Элла</h3>
+                <p class="product-card__description">Элла спит.</p>
+                <p class="product-card__price">Бесценно</p>
+                <div class="product-card__actions"><a class="button button--secondary" href="product-ella.html">Подробнее</a><a
+                        class="button" href="order.html">Заказать</a></div>
+            </article>
+            <article class="product-card filter-ella"><span class="product-card__badge">Хит</span>
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/ella-tired-guardian-360.webp 360w, images/ella-tired-guardian-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/ella-tired-guardian.jpg"
+                         alt="Моя уставшая защитница Элла" width="1919" height="2560" loading="lazy"></picture>
+                <h3 class="product-card__title">Моя уставшая защитница Элла</h3>
+                <p class="product-card__description">Элла в костюме защитницы.</p>
+                <p class="product-card__price">Бесценно</p>
+                <div class="product-card__actions"><a class="button button--secondary"
+                                                      href="products/ella-tired-guardian.html">Подробнее</a><a
+                        class="button" href="order.html">Заказать</a></div>
+            </article>
+            <article class="product-card filter-ella"><span class="product-card__badge">Хит</span>
+                <picture>
+                    <source type="image/webp"
+                            srcset="images/ella-guardian-360.webp 360w, images/ella-guardian-720.webp 720w"
+                            sizes="(max-width: 599px) calc(100vw - 64px), (max-width: 899px) 45vw, 320px">
+                    <img class="product-card__image" src="images/ella-guardian.jpg" alt="Моя защитница Элла"
+                         width="1920" height="2560" loading="lazy"></picture>
+                <h3 class="product-card__title">Моя защитница Элла</h3>
+                <p class="product-card__description">Элла с копьём и щитом.</p>
+                <p class="product-card__price">Бесценно</p>
+                <div class="product-card__actions"><a class="button button--secondary"
+                                                      href="products/ella-guardian.html">Подробнее</a><a class="button"
+                                                                                                         href="order.html">Заказать</a>
+                </div>
+            </article>
+        </div>
+        <p><a class="button button--secondary" href="catalog.html">Весь каталог</a></p></section>
+    <section class="section" id="reviews"><h2>Отзывы покупателей</h2>
+        <div class="reviews-grid">
+            <article class="review-card"><h3>Термостакан</h3>
+                <p>Яркий цвет и компактный формат.</p></article>
+            <article class="review-card"><h3>Носки</h3>
+                <p>Удобная вещь на каждый день.</p></article>
+            <article class="review-card"><h3>Шоппер</h3>
+                <p>Вместительный и удобный для покупок.</p></article>
+        </div>
+        <p><a class="button button--secondary" href="reviews.html">Все отзывы</a></p></section>
+    <section class="section" id="faq"><h2>Часто задаваемые вопросы</h2>
+        <div class="faq-list">
+            <article class="faq-item"><h3>Где посмотреть характеристики?</h3>
+                <p>Откройте страницу товара в каталоге.</p></article>
+            <article class="faq-item"><h3>Как оставить заявку?</h3>
+                <p>Выберите товар и откройте страницу заявки.</p></article>
+        </div>
+        <p><a class="button button--secondary" href="faq.html">Все вопросы</a></p></section>
+</main>
+<footer><p>&copy; 2026 Мерч 1С.</p></footer>
+<script src="js/data.js" defer></script>
+<script src="js/cart.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

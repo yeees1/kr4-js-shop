@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Корзина магазина Мерч 1С">
+  <title>Корзина — Мерч 1С</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Перейти к основному содержимому</a>
+<header><div class="site-header">
+  <a class="site-logo" href="index.html"><img src="images/logo.jpg" alt="" width="120" height="90"><span class="site-name">Мерч 1С</span></a>
+  <nav class="site-nav" aria-label="Основная навигация"><ul class="site-nav__list">
+    <li><a href="index.html">Главная</a></li><li><a href="cart.html" aria-current="page">Корзина <span class="cart-count" aria-label="Товаров в корзине">0</span></a></li><li><a href="catalog.html">Каталог</a></li><li><a href="order.html">Заявка</a></li><li><a href="reviews.html">Отзывы</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contacts.html">Контакты</a></li><li><a href="index.html#advantages">Преимущества</a></li><li><a href="index.html#popular">Популярные товары</a></li>
+  </ul></nav>
+</div></header>
+<main id="main" class="section">
+  <h1>Корзина</h1>
+  <p id="cart-empty" class="empty-state">Корзина пуста. <a href="catalog.html">Перейти в каталог</a></p>
+  <ul id="cart-list" class="cart-list"></ul>
+  <div id="cart-summary" hidden>
+    <p>Товаров: <strong id="cart-items-count">0</strong></p>
+    <p>Итого: <strong id="cart-total">0 ₽</strong></p>
+    <p>Корзина сохраняется в этом браузере. Оформление заказа демонстрационное.</p>
+    <a class="button" href="order.html">Перейти к заявке</a>
+  </div>
+</main>
+<footer><p>&copy; 2026 Мерч 1С.</p></footer>
+<script src="js/data.js" defer></script><script src="js/cart.js" defer></script><script src="js/main.js" defer></script>
+</body>
+</html>
