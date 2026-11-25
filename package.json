@@ -1,7 +1,7 @@
 {
   "name": "kr4-js-shop",
   "version": "1.0.0",
-  "description": "Учебный интерактивный магазин на HTML, CSS и JavaScript",
+  "description": "Интерактивный магазин на HTML, CSS и JavaScript",
   "scripts": {
     "test": "python3 tests/test_browser.py"
   },

@@ -48,7 +48,7 @@ if (orderForm) {
       return;
     }
     message.classList.remove('form-message--error');
-    message.textContent = 'Заявка подготовлена. Это демонстрация, данные не отправлены.';
+    message.textContent = 'Заявка подготовлена. Данные не отправлены.';
     orderForm.reset();
     fields.forEach(field => { field.input.removeAttribute('aria-invalid'); field.errorNode.hidden = true; });
     message.focus();
