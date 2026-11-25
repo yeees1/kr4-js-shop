@@ -1,7 +1,6 @@
 const orderForm = document.querySelector('#order-form');
 if (orderForm) {
   const fields = [
-    { input: orderForm.querySelector('#order-product'), check: value => value !== '', error: 'Выберите товар.' },
     { input: orderForm.querySelector('#order-name'), check: value => value.trim().length >= 2, error: 'Введите имя не короче 2 символов.' },
     { input: orderForm.querySelector('#order-email'), check: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()), error: 'Введите корректный e-mail.' },
     { input: orderForm.querySelector('#order-phone'), check: value => /^(?:\+7|8)?\d{10}$/.test(value.replace(/[\s()-]/g, '')), error: 'Введите номер из 10 цифр или с +7/8.' },
@@ -33,6 +32,13 @@ if (orderForm) {
 
   orderForm.addEventListener('submit', event => {
     event.preventDefault();
+    if (!cart.length) {
+      message.hidden = false;
+      message.classList.add('form-message--error');
+      message.textContent = 'Добавьте товары в корзину перед подготовкой заявки.';
+      document.querySelector('#order-empty a').focus();
+      return;
+    }
     const valid = fields.map(validate).every(Boolean);
     message.hidden = false;
     if (!valid) {

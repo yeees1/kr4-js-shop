@@ -31,24 +31,14 @@
 </header>
 <main id="main">
     <section class="section"><h1>Оставить заявку</h1>
-        <p>Выберите товар и укажите контактные данные. Это демонстрация: заявка не отправляется на сервер.</p>
+        <p>Проверьте товары из корзины и укажите контактные данные. Это демонстрация: заявка не отправляется на сервер.</p>
         <form id="order-form" class="order-form order-form--page" novalidate>
-            <div class="form-field"><label for="order-product">Товар</label><select id="order-product" required>
-                <option value="">Выберите товар</option>
-                <optgroup label="Другие товары из КР №3">
-                    <option>Футболка «Славянский интерфейс»</option>
-                    <option>Футболка Balance</option>
-                    <option>Металлический кардхолдер</option>
-                    <option>Ремешок для телефона</option>
-                    <option>Кружка Grade Fade</option>
-                    <option>Выдвижной кабель 3 в 1</option>
-                    <option>Коврик с подсказками по 1С</option>
-                    <option>Ручка-мультитул 1С</option>
-                    <option>Моя спящая Элла</option>
-                    <option>Моя уставшая защитница Элла</option>
-                    <option>Моя защитница Элла</option>
-                </optgroup>
-            </select></div>
+            <section aria-labelledby="order-items-heading">
+                <h2 id="order-items-heading">Выбранные товары</h2>
+                <p id="order-empty" class="empty-state" hidden>Корзина пуста. <a href="catalog.html">Выбрать товары в каталоге</a></p>
+                <ul id="order-items" class="cart-list"></ul>
+                <p id="order-total" hidden></p>
+            </section>
             <div class="form-field"><label for="order-name">Имя</label><input id="order-name" type="text" minlength="2"
                                                                               autocomplete="given-name" required></div>
             <div class="form-field"><label for="order-email">E-mail</label><input id="order-email" type="email"

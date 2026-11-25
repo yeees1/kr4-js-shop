@@ -73,3 +73,26 @@ if (cartList) {
   document.addEventListener('cartchange', renderCart);
   renderCart();
 }
+
+const orderItems = document.querySelector('#order-items');
+if (orderItems) {
+  const empty = document.querySelector('#order-empty');
+  const total = document.querySelector('#order-total');
+  function renderOrderItems() {
+    const quantities = new Map();
+    cart.forEach(id => quantities.set(id, (quantities.get(id) || 0) + 1));
+    orderItems.replaceChildren();
+    for (const [id, quantity] of quantities) {
+      const product = products.find(item => item.id === id);
+      const row = document.createElement('li');
+      row.classList.add('cart-row');
+      row.textContent = `${product.title} — ${quantity} × ${formatPrice(product.price)} = ${formatPrice(quantity * product.price)}`;
+      orderItems.append(row);
+    }
+    empty.hidden = cart.length > 0;
+    total.hidden = cart.length === 0;
+    total.textContent = `Итого: ${formatPrice(cartTotal())}`;
+  }
+  document.addEventListener('cartchange', renderOrderItems);
+  renderOrderItems();
+}

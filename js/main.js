@@ -1,18 +1,8 @@
 document.querySelectorAll('.cart-count').forEach(count => { count.textContent = cart.length; });
 
-const orderSelect = document.querySelector('#order-product');
-if (orderSelect) {
-  const catalogGroup = document.createElement('optgroup');
-  catalogGroup.label = 'Товары каталога КР №4';
-  products.filter(product => product.isAvailable).forEach(product => {
-    const option = document.createElement('option');
-    option.value = product.id;
-    option.textContent = product.title;
-    catalogGroup.append(option);
-  });
-  orderSelect.append(catalogGroup);
-  const selected = Number(new URLSearchParams(location.search).get('product')) || cart[0];
-  if (products.some(product => product.id === selected && product.isAvailable)) orderSelect.value = selected;
+if (document.querySelector('#order-items')) {
+  const selected = Number(new URLSearchParams(location.search).get('product'));
+  if (products.some(product => product.id === selected && product.isAvailable) && !cart.includes(selected)) addToCart(selected);
 }
 
 const detailActions = document.querySelector('.product-detail .product-card__actions');

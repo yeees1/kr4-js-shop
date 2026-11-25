@@ -52,6 +52,10 @@ try:
         assert page.locator('#cart-items-count').inner_text() == '1'
 
         page.goto(base + '/order.html')
+        assert page.locator('#order-product').count() == 0
+        assert page.locator('#order-items li').count() == 1
+        assert 'Бирюзовая футболка 1С' in page.locator('#order-items').inner_text()
+        assert '3 900' in page.locator('#order-total').inner_text().replace('\xa0', ' ')
         page.locator('#order-form button[type="submit"]').click()
         assert page.locator('#order-message').is_visible()
         assert page.locator('#order-email').get_attribute('aria-invalid') == 'true'
@@ -62,6 +66,16 @@ try:
         page.locator('#order-form button[type="submit"]').click()
         assert 'Заявка подготовлена' in page.locator('#order-message').inner_text()
         assert page.locator('#order-name').input_value() == ''
+
+        page.evaluate("localStorage.removeItem('kr4-cart')")
+        page.reload()
+        assert page.locator('#order-empty').is_visible()
+        page.locator('#order-form button[type="submit"]').click()
+        assert 'Добавьте товары' in page.locator('#order-message').inner_text()
+        page.goto(base + '/order.html?product=1')
+        assert page.locator('#order-items li').count() == 1
+        page.reload()
+        assert page.locator('#order-items li').count() == 1
 
         for file in [*ROOT.glob('*.html'), *(ROOT / 'products').glob('*.html')]:
             page.goto(base + '/' + file.relative_to(ROOT).as_posix(), wait_until='networkidle')
