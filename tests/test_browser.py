@@ -78,10 +78,8 @@ try:
         assert page.locator('#order-empty').is_visible()
         page.locator('#order-form button[type="submit"]').click()
         assert 'Добавьте товары' in page.locator('#order-message').inner_text()
-        page.goto(base + '/order.html?product=1')
-        assert page.locator('#order-items li').count() == 1
-        page.reload()
-        assert page.locator('#order-items li').count() == 1
+        page.goto(base + '/catalog.html')
+        page.locator('[data-id="1"]').click()
         page.goto(base + '/cart.html')
         page.get_by_role('button', name='Убрать одну единицу: Бирюзовая футболка 1С').click()
         assert page.locator('#cart-empty').is_visible()
@@ -90,6 +88,10 @@ try:
 
         for file in [*ROOT.glob('*.html'), *(ROOT / 'products').glob('*.html')]:
             page.goto(base + '/' + file.relative_to(ROOT).as_posix(), wait_until='networkidle')
+            if file.name.startswith('product') or file.parent.name == 'products':
+                assert page.locator('.product-detail .product-card__actions a[href$="order.html"]').count() == 0
+            if file.name == 'product.html':
+                assert page.get_by_role('button', name='В корзину').count() == 1
         assert not errors, errors
         browser.close()
 finally:
