@@ -137,6 +137,32 @@ a:focus-visible {
     border-radius: var(--radius-lg);
 }
 
+.hero--photo {
+    min-height: 260px;
+    padding: 48px;
+    background: linear-gradient(90deg, rgb(247 244 235 / 96%) 0%, rgb(247 244 235 / 84%) 55%, rgb(247 244 235 / 44%) 100%), url("../images/moments-1.jpg") center 48% / cover;
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+}
+
+.moments-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+}
+
+@media (min-width: 750px) {
+    .moments-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
 .section {
     max-width: var(--container-width);
     margin: 0 auto var(--space-xl);

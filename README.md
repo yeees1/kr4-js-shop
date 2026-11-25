@@ -12,7 +12,7 @@
 
 - `index.html`, `catalog.html`, `product.html`, `products/`, `cart.html`, `order.html`, `contacts.html`, `reviews.html`, `faq.html` — страницы магазина;
 - `css/style.css`, `css/responsive.css` — оформление, адаптивность и стили интерактивных состояний;
-- `images/` — локальные изображения товаров;
+- `images/` — локальные изображения товаров и фотографии для главной страницы;
 - `js/data.js` — массив из 12 товаров с уникальными числовыми `id`, едиными полями `title`, `category`, `price`, `isAvailable`, `image`, `url`, `description` и форматирование цены;
 - `js/catalog.js` — генерация карточек через `createElement`, поиск, фильтрация, сортировка, избранное и пустое состояние;
 - `js/cart.js` — добавление и удаление товаров, подсчёт суммы через `reduce`, сохранение корзины в `localStorage` и вывод выбранных товаров в заявке;
